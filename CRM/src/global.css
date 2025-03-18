@@ -1,1 +1,27 @@
 @import "tailwindcss";
+
+
+*,
+::after,
+::before,
+::backdrop,
+::file-selector-button {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  color: #000;
+  font-size: 14px;
+  line-height: normal;
+}
+
+
+@media (width >= 96rem) {
+  .container {
+    max-width: 1372px;
+  }
+}

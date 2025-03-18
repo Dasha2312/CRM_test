@@ -17,8 +17,4 @@ For start you should do this step:
 npm i
 npm run dev
 
-Stack
-1. React + Vite
-2. React Query
-3. Axios
-4. Tailwindcss
+

@@ -6,6 +6,7 @@ For start you should do this step:
 2. npm run dev
 
 
+Stack
 1. React + Vite
 2. React Query
 3. Axios
