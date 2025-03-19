@@ -78,7 +78,7 @@ function MenuBottom() {
   return (
     <div className="menuBottom">
       <div className="container mx-auto px-4">
-        <div className="menuBottom__items flex py-[12px]">
+        <div className="menuBottom__items flex py-[12px] xl:flex-nowrap flex-wrap md:justify-start">
           {menuBottom.map(item => <MenuBottomItem key={item.id} item={item} />)}
         </div>
       </div>
