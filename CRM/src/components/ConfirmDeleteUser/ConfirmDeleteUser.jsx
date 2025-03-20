@@ -16,8 +16,6 @@ function ConfirmDeleteUser() {
     dispatch(closeModal())
   }
 
-  console.log('currentUser', currentUser)
-
   return (
     <div>
       <div className='text-2xl mb-5 font-semibold text-center'>Delete user</div>

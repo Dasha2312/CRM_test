@@ -4,10 +4,12 @@ import { createSlice } from "@reduxjs/toolkit"
 const initialState = {
   users: [],
   selectedUser: [],
+  originalUsers: [],
   currentPage: 1,
   totalUsers: 0,
   totalPages: 0,
   usersPerPage: 10,
+  userSearchResult: null
 }
 
 const usersSlice = createSlice({
@@ -34,8 +36,16 @@ const usersSlice = createSlice({
       state.totalUsers = state.users.length;
       state.totalPages = Math.ceil(state.totalUsers / state.usersPerPage);
     },
+    upDateUser: (state, action) => {
+      const updateUser = action.payload;
+      const userIndex = state.users.findIndex(user => user.id == updateUser.id)
+
+      if(userIndex !== -1) {
+        state.users[userIndex] = {...state.users[userIndex], ...updateUser}
+      }
+    },
     selectUser: (state, action) => {
-      state.selectedUser.push(action.payload)
+      state.selectedUser = action.payload
     },
     setPage: (state, action) => {
       state.currentPage = action.payload;
@@ -58,10 +68,30 @@ const usersSlice = createSlice({
           return b.name.localeCompare(a.name);
         }
       });
+    },
+    searchUserByName: (state, action) => {
+      
+      const valueSearch = action.payload.toLowerCase();
+
+      if(state.originalUsers.length == 0) {
+        state.originalUsers = state.users;
+      }
+
+      if(valueSearch.length == 0) {
+        state.users = state.originalUsers;
+      } else {
+        state.users = state.originalUsers.filter(user => user.name.toLowerCase().includes(valueSearch))
+      }
+
+      if(state.users.length == 0) {
+        state.userSearchResult = 'Not found'
+      } else {
+        state.userSearchResult = null
+      }
     }
   },
 })
 
-export const {setUsers, addUser, deleteUser, selectUser, setPage, chooseUsersPerPage, sortUsersByName} = usersSlice.actions;
+export const {setUsers, addUser, deleteUser, selectUser, setPage, chooseUsersPerPage, sortUsersByName, searchUserByName, upDateUser} = usersSlice.actions;
 
 export default usersSlice.reducer;

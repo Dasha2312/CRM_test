@@ -4,6 +4,7 @@ import Menu from '../Menu/Menu';
 import Modal from '../../UI/Modal/Modal';
 import FormAddUser from "../FormAdduser/FormAdduser";
 import ConfirmDeleteUser from "../ConfirmDeleteuser/ConfirmDeleteuser";
+import UpDateUser from "../UpDateUser/UpDateUser";
 
 
 function Header() {
@@ -16,6 +17,7 @@ function Header() {
         <Modal isModalOpen={isModalOpen} modalType={modalType}>
           {modalType == "AddUser" && <FormAddUser />}
           {modalType == "ConfirmDeleteUser" && <ConfirmDeleteUser />}
+          {modalType == "UpDateUser" && <UpDateUser />}
         </Modal>
       }
     </>

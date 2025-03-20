@@ -8,13 +8,55 @@ function TableBody({data, loading, error, handleClick, isSelectedRows}) {
 
   function handleCheckInput(e,item) {
     handleClick(e)
-    dispatch(selectUser(item))
+
+    if (isSelectedRows.includes(item.id)) {
+      dispatch(selectUser([]))
+    } else {
+      dispatch(selectUser([item]))
+    }
   }
 
   if(error) {
     return <div>{error}</div>
   }
-  
+
+  if(loading) {
+    return (
+      <>
+      <tbody className="animate-pulse">
+       { Array.from({length: 10}).map((_,index) => (
+        <tr key={index} className="h-[100px]">
+          <td>
+            <div className="h-[20px] w-[20px] bg-gray-200 ml-[12px] my-1 rounded"></div>
+          </td>
+          <td>
+            <div className="w-[85px] h-[25px] bg-gray-200 mr-2 my-1 rounded"></div>
+          </td>
+          <td>
+            <div className="bg-gray-200 w-[250px] h-[25px] mr-2 my-1 rounded"></div>
+          </td>
+          <td>
+            <div className="bg-gray-200 w-[250px] h-[25px] mr-2 my-1 rounded"></div>
+          </td>
+          <td>
+            <div className="bg-gray-200 w-[200px] h-[25px] mr-2 my-1 rounded"></div>
+          </td>
+          <td>
+            <div className="bg-gray-200 w-[100px] h-[25px] mr-2 my-1 rounded"></div>
+          </td>
+          <td>
+            <div className="bg-gray-200 w-[100px] h-[25px] mr-2 my-1 rounded"></div>
+          </td>
+          <td>
+            <div className="bg-gray-200 w-[100px] h-[25px] mr-2 my-1 rounded"></div>
+          </td>
+        </tr>
+       ))}
+      </tbody>
+    </>
+    )
+  }
+
   return (
     <tbody className="">
       {data?.map((item,index) => {
