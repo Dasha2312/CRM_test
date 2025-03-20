@@ -34,7 +34,7 @@ function DropDown({item, className}) {
         </div>
       </div>
 
-      {isOpen && <div className="rounded bg-white absolute top-[65px] w-[calc(100%+16px)] left-[-8px] shadow-md dropdown-menu px-5 py-3">
+      {isOpen && <div className="rounded bg-white absolute top-[65px] w-[calc(100%+16px)] left-[-8px] shadow-md dropdown-menu px-5 py-3 z-50">
         {item.items.map(link => (
           <NavLink to={`/${link.name.toLowerCase()}`} key={link.id}
           className={({ isActive }) => `${isActive ? 'active' : ''} block py-1 my-1 hover:opacity-[0.5] duration-500`}>
