@@ -1,7 +1,7 @@
 # CRM_test
 CRM page
 
-For start you should do this step:
+For start you should do this steps:
 1. npm i
 2. npm run dev
 
