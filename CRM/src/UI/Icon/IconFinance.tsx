@@ -1,6 +1,6 @@
-import React from 'react';
+import {IconProps} from "../../interfaces/index"
 
-function IconFinance({color, size="25"}) {
+function IconFinance({color, size="25"}: IconProps) {
   return (
     <svg width={size} height={size} viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M3.38893 2.5L3.38892 19.5C3.38892 20.6046 4.28435 21.5 5.38892 21.5H22.3889" stroke={color} strokeWidth="1.5" strokeMiterlimit="1.41421" strokeLinecap="round" strokeLinejoin="round"/>

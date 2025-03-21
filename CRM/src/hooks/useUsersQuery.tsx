@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { setPage, setUsers } from "../store/Slices/UsersSlice";
 import { useEffect } from "react";
 
-function useUsersQuery(currentPage = 1) {
+function useUsersQuery(currentPage: number = 1) {
   const dispatch = useDispatch();
 
   const {data: getUsers, isPending: getUsersPending, error: getUsersError, isSuccess} = useQuery({
@@ -19,7 +19,7 @@ function useUsersQuery(currentPage = 1) {
     }
   }, [isSuccess, getUsers, dispatch]);
 
-  const handlePageChange = (newPage) => {
+  function handlePageChange(newPage: number) {
     dispatch(setPage(newPage));
   };
 

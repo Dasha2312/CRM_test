@@ -1,4 +1,6 @@
-function IconCalendar({color, size="25"}) {
+import {IconProps} from "../../interfaces/index"
+
+function IconCalendar({color, size="25"}: IconProps) {
   return (
     <svg width={size} height={size} viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path fillRule="evenodd" clipRule="evenodd" d="M21 5.4H3.2222V19.8H21V5.4ZM3.2222 4.2C2.60855 4.2 2.11108 4.73726 2.11108 5.4V19.8C2.11108 20.4627 2.60855 21 3.2222 21H21C21.6136 21 22.1111 20.4627 22.1111 19.8V5.4C22.1111 4.73726 21.6136 4.2 21 4.2H3.2222Z" fill={color}/>

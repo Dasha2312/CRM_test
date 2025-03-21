@@ -1,15 +1,30 @@
 import { NavLink } from "react-router-dom";
 import IconArrowDown from "../Icon/IconArrowDown";
-import { useEffect, useRef, useState } from "react";
+import { ReactElement, ReactHTMLElement, useEffect, useRef, useState } from "react";
 
-function DropDown({item, className}) {
+interface DropDownProps {
+  item: {
+    id: number,
+    icon: string,
+    name: string,
+    items: itemProps[],
+  },
+  className: string
+}
+
+interface itemProps {
+  id: number,
+  name: string
+}
+
+function DropDown({item, className}: DropDownProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [isLinkActive, setisLinkActive] = useState(item.id == 2)
-  const dropdownRef = useRef();
+  const dropdownRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    function handleClickOutside(e) {
-      if(dropdownRef.current && !dropdownRef.current.contains(e.target)) {
+    function handleClickOutside(e: MouseEvent) {
+      if(dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
         setIsOpen(false)
       }
     }
