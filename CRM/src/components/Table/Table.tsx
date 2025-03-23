@@ -1,15 +1,29 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import TableBody from "./TableBody";
-import TableHeader from "./tableHeader";
+
 import TableActions from "./TableActions";
 import Pagination from "../../UI/Pagination/Pagination";
 import { useSelector } from "react-redux";
+import TableHeader from "./tableHeader";
 
-function Table({data, loading, error}) {
-  const {userSearchResult} = useSelector(state => state.users);
+interface TableRow {
+  id: number,
+  name: string,
+  email: string,
+  [key: string]: any
+}
 
-  const [isAllSelected, setIsAllSelected] = useState(false);
-  const [isSelectedRows, setIsSelectedRows] = useState([]);
+interface TableProps {
+  data: TableRow[],
+  loading: boolean,
+  error: string,
+}
+
+function Table({data, loading, error}: TableProps) {
+  const {userSearchResult} = useSelector((state: any) => state.users);
+
+  const [isAllSelected, setIsAllSelected] = useState<boolean>(false);
+  const [isSelectedRows, setIsSelectedRows] = useState<number[]>([]);
 
   function handleSelectAll() {
     const newSelectAllState = !isAllSelected;
@@ -22,17 +36,18 @@ function Table({data, loading, error}) {
     }
   }
   
-  function handleClickInput(e) {
+  function handleClickInput(e: React.ChangeEvent<HTMLInputElement>) {
     const { id, checked } = e.target;
+    const numericId = Number(id);
 
     if (checked) {
       setIsSelectedRows(prevData => 
-        prevData.includes(id) ? prevData : [...prevData, Number(id)]
+        prevData.includes(numericId) ? prevData : [...prevData, numericId]
       );
     } else {
       setIsAllSelected(false)
       setIsSelectedRows(prevData => 
-        prevData.filter(itemId => itemId !== Number(id))
+        prevData.filter(itemId => itemId !== numericId)
       );
     }
   }

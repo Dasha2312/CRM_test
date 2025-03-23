@@ -1,16 +1,21 @@
 import InputCheckbox from "../../UI/InputCheckbox/InputCheckbox";
 import IconNumber from "../../UI/Icon/IconNumber"
-import IconSort from "../../UI/Icon/IconSort";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { sortUsersByName } from "../../store/Slices/UsersSlice";
 
-function TableHeader({handleClick, isChecked}) {
+interface TableHeaderProps {
+  handleClick: (e: React.ChangeEvent<HTMLInputElement>) => void,
+  isChecked: boolean
+}
+
+function TableHeader({handleClick, isChecked}: TableHeaderProps) {
+  console.log(handleClick)
   const dispatch = useDispatch();
 
   const [sortOrder, setSortOrder] = useState('asc');
 
-  function handleCheckAllInputs(e) {
+  function handleCheckAllInputs(e: React.ChangeEvent<HTMLInputElement>) {
     handleClick(e)
   }
 

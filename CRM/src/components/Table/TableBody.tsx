@@ -2,11 +2,27 @@ import { useDispatch, useSelector } from "react-redux";
 import InputCheckbox from "../../UI/InputCheckbox/InputCheckbox";
 import { selectUser } from "../../store/Slices/UsersSlice";
 
-function TableBody({data, loading, error, handleClick, isSelectedRows}) {
-  const { currentPage, usersPerPage } = useSelector(state => state.users);
+interface TableBodyItemProps {
+  id: number,
+  name: string,
+  email: string,
+  [key: string] : any
+}
+
+interface TableBodyProps {
+  data: TableBodyItemProps[],
+  loading: boolean,
+  error: string,
+  handleClick: (e: React.ChangeEvent<HTMLInputElement>) => void,
+  isSelectedRows: number [],
+  isChecked: number[];
+}
+
+function TableBody({data, loading, error, handleClick, isSelectedRows, isChecked}: TableBodyProps) {
+  const { currentPage, usersPerPage } = useSelector((state: any) => state.users);
   const dispatch = useDispatch();
 
-  function handleCheckInput(e,item) {
+  function handleCheckInput(e: React.ChangeEvent<HTMLInputElement>, item: TableBodyItemProps) {
     handleClick(e)
 
     if (isSelectedRows.includes(item.id)) {
@@ -62,7 +78,7 @@ function TableBody({data, loading, error, handleClick, isSelectedRows}) {
       {data?.map((item,index) => {
         const userIndex = (currentPage - 1) * usersPerPage + index + 1;
         return (
-          <tr key={item.id} id={item.id}>
+          <tr key={item.id} id={String(item.id)}>
             <td className="py-4 pl-[12px] pr-1 min-h-[105px] w-[53px]">
               <InputCheckbox  name={`row-${item.id}`} onChange={(e) => handleCheckInput(e, item)} id={item.id} isChecked={isSelectedRows.includes(item.id)} />
             </td>

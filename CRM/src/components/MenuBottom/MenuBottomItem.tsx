@@ -1,7 +1,8 @@
 import { NavLink } from "react-router-dom";
 import DropDown from "../../UI/DropDown/DropDown"
+import { DropDownParentProps } from "src/interfaces";
 
-function MenuBottomItem({item}) {
+function MenuBottomItem({item}: DropDownParentProps) {
   return (
     <>
       {item.type == "dropdown" ? (

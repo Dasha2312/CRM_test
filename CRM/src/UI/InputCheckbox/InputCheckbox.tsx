@@ -1,5 +1,5 @@
 interface InputCheckboxProps {
-  children: React.ReactNode;
+  children?: React.ReactNode;
   name: string;
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   isChecked: boolean;
