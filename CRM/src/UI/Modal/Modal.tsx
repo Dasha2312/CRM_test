@@ -1,7 +1,12 @@
 import { useDispatch } from "react-redux";
 import { closeModal } from "../../store/Slices/ModalSlice";
 
-function Modal({isModalOpen, children }) {
+interface ModalProps {
+  isModalOpen: boolean,
+  children: React.ReactNode
+}
+
+function Modal({isModalOpen, children }: ModalProps) {
   const dispatch = useDispatch();
 
   return (

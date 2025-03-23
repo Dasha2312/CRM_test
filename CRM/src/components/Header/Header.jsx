@@ -1,10 +1,10 @@
 import { useSelector} from "react-redux"
 
 import Menu from '../Menu/Menu';
-import Modal from '../../UI/Modal/Modal';
-import FormAddUser from "../FormAdduser/FormAdduser";
-import ConfirmDeleteUser from "../ConfirmDeleteuser/ConfirmDeleteuser";
+import Modal from '../../UI/Modal/Modal.tsx';
+import FormAddUser from "../FormAdduser/FormAddUser";
 import UpDateUser from "../UpDateUser/UpDateUser";
+import ConfirmDeleteUser from "../ConfirmDeleteUser/ConfirmDeleteUser";
 
 
 function Header() {
